@@ -1,0 +1,35 @@
+.shoppingTasks {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  flex-direction: column;
+  text-align: center;
+  margin-left: 20%;
+  margin-right: 20%;
+}
+
+.headerTasks {
+  font-size: 25px;
+}
+
+.sortByDiv {
+  padding-top: 3%;
+  padding-bottom: 3%;
+  display: flex;
+  justify-content: space-evenly;
+}
+.linkLike {
+  background: none;
+  border: none;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.linkLike:hover {
+  color: #ffcd00;
+}
+
+.wrapper {
+  padding-top: 3%;
+  padding-bottom: 3%;
+}

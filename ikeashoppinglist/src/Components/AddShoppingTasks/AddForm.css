@@ -1,0 +1,21 @@
+.formAdd {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  width: 70%;
+}
+
+.inputForm {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  width: 60%;
+  padding-bottom: 8%;
+}
+
+.font {
+  font-size: 15px;
+  text-align: center;
+}
