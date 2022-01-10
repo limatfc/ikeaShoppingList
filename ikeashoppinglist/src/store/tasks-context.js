@@ -1,11 +1,9 @@
 import React from "react";
 
 const TasksContext = React.createContext({
-  nonCompletedItems: [],
-  inputedItemsHandler: (items) => {},
-  completedItems: [],
-  completedItemsHandler: (index) => {},
-  deleteNonCompleteItemHandler: (index) => {},
+  inputedTasks: [],
+  inputedTaskHandler: (items) => {},
+  onTaskChangeHandler: (item) => {},
   sortByName: () => {},
   sortByPrice: () => {},
 });

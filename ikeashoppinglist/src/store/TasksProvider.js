@@ -3,18 +3,25 @@ import { useNavigate } from "react-router-dom";
 import TasksContext from "./tasks-context";
 
 const TasksProvider = (props) => {
-  const [nonCompletedItems, setnonCompletedItems] = useState([]);
-  const [completedItems, setCompletedItems] = useState([]);
+  const [inputedTasks, setInputedTasks] = useState([]);
   const navigate = useNavigate();
 
   const getLocalData = () => {
-    const getLocalData = localStorage.getItem("storedNonCompletedtems");
+    const getLocalData = localStorage.getItem("storedInputedTasks");
     const localData = JSON.parse(getLocalData);
-    if (localData.length > 0) {
-      setnonCompletedItems(localData);
-      navigate("/shoppinglist");
+    if (localData && localData.length > 0) {
+      localData.find((incompleteTask) => {
+        if (incompleteTask.status === "incomplete") {
+          navigate("/shoppinglist");
+          setInputedTasks(localData);
+        } else {
+          setInputedTasks(localData);
+          navigate("/");
+        }
+        return incompleteTask.status === "incomplete";
+      });
     }
-    if (localData.length === 0) {
+    if (!localData || localData.length === 0) {
       navigate("/");
     }
   };
@@ -23,35 +30,26 @@ const TasksProvider = (props) => {
   useEffect(getLocalData, []);
 
   useEffect(() => {
-    localStorage.setItem(
-      "storedNonCompletedtems",
-      JSON.stringify(nonCompletedItems)
-    );
-  }, [nonCompletedItems]);
+    localStorage.setItem("storedInputedTasks", JSON.stringify(inputedTasks));
+  }, [inputedTasks]);
 
-  const inputedItemsHandler = (items) => {
-    setnonCompletedItems((prevItems) => {
+  const inputedTaskHandler = (items) => {
+    setInputedTasks((prevItems) => {
       return [items, ...prevItems];
     });
   };
 
-  const deleteNonCompleteItemHandler = (index) => {
-    setnonCompletedItems((prevItems) => {
-      const copyNonCompletedItems = [...prevItems];
-      copyNonCompletedItems.splice(index, 1);
-      return copyNonCompletedItems;
-    });
-  };
-
-  const completedItemsHandler = (index) => {
-    const clickedItem = nonCompletedItems[index];
-    setCompletedItems((prevClickedItem) => {
-      return [clickedItem, ...prevClickedItem];
+  const onTaskChangeHandler = (keyValue) => {
+    setInputedTasks((prevItems) => {
+      const copyPrevItems = [...prevItems];
+      const find = copyPrevItems.find((itemKey) => itemKey.key === keyValue);
+      const alteredValue = (find.status = "complete");
+      return [alteredValue, ...copyPrevItems];
     });
   };
 
   const sortByName = () => {
-    const copyNonCompletedItems = [...nonCompletedItems];
+    const copyNonCompletedItems = [...inputedTasks];
     const sortedName = copyNonCompletedItems.sort((a, b) => {
       if (a.name < b.name) {
         return -1;
@@ -61,23 +59,21 @@ const TasksProvider = (props) => {
         return 0;
       }
     });
-    setnonCompletedItems(sortedName);
+    setInputedTasks(sortedName);
   };
 
   const sortByPrice = () => {
-    const copyNonCompletedItems = [...nonCompletedItems];
+    const copyNonCompletedItems = [...inputedTasks];
     const sortedPrice = copyNonCompletedItems.sort((a, b) => {
       return a.price - b.price;
     });
-    setnonCompletedItems(sortedPrice);
+    setInputedTasks(sortedPrice);
   };
 
   const taskContext = {
-    nonCompletedItems,
-    inputedItemsHandler: inputedItemsHandler,
-    completedItems,
-    completedItemsHandler: completedItemsHandler,
-    deleteNonCompleteItemHandler: deleteNonCompleteItemHandler,
+    inputedTasks,
+    inputedTaskHandler: inputedTaskHandler,
+    onTaskChangeHandler: onTaskChangeHandler,
     sortByName: sortByName,
     sortByPrice: sortByPrice,
   };

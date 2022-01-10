@@ -4,6 +4,7 @@ import "./App.css";
 import AddShoppingTask from "./Components/AddShoppingTasks/AddShoppingTask";
 import HomePage from "./Components/HomePage/HomePage";
 import ShoppingTasks from "./Components/Tasks/ShoppingTasks";
+import Error from "./Error/Error";
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
           }
         />
         <Route path="/shoppinglist" element={<ShoppingTasks />} />
+        <Route path="*" element={Error} />
       </Routes>
     </div>
   );

@@ -2,22 +2,30 @@ import React, { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import TasksContext from "../../store/tasks-context";
 import "./AddForm.css";
+import imageDefault from "../Images/imageDefault.jpeg";
 import ButtonAST from "./ButtonAST";
+import { v4 as uuidv4 } from "uuid";
 
 const AddForm = () => {
   const navigate = useNavigate();
   const tasksCtx = useContext(TasksContext);
   const [nameInputedData, setNameInputedData] = useState("");
-  const [priceInputedData, setPriceInputedData] = useState("0.00");
+  const [priceInputedData, setPriceInputedData] = useState();
 
   const onNameChange = (event) => {
-    setNameInputedData(event.target.value);
+    const inputedName = event.target.value;
+    if (inputedName.trim().length > 0) {
+      const camelCaseName = inputedName[0].toUpperCase() + inputedName.slice(1);
+      setNameInputedData(camelCaseName);
+    }
   };
 
   const onPriceChange = (event) => {
-    let price = event.target.value;
-    price = Number(price).toFixed(2);
-    setPriceInputedData(price);
+    let inputedPrice = event.target.value;
+    if (inputedPrice.trim().length > 0) {
+      inputedPrice = Number(inputedPrice).toFixed(2);
+      setPriceInputedData(inputedPrice);
+    }
   };
 
   const submitHandler = (event) => {
@@ -26,8 +34,11 @@ const AddForm = () => {
     const allInputedDataArray = {
       name: nameInputedData,
       price: priceInputedData,
+      status: "incomplete",
+      imageLink: imageDefault,
+      key: uuidv4(),
     };
-    tasksCtx.inputedItemsHandler(allInputedDataArray);
+    tasksCtx.inputedTaskHandler(allInputedDataArray);
     navigate("/shoppinglist");
   };
 
@@ -36,10 +47,22 @@ const AddForm = () => {
       <form className="formAdd" onSubmit={submitHandler}>
         <div className="inputForm">
           <label className="font">Product (name)</label>
-          <input onChange={onNameChange} type="text"></input>
+          <input
+            onChange={onNameChange}
+            placeholder="Product's name"
+            type="text"
+            required="true"
+          ></input>
           <br></br>
           <label className="font">Price ($)</label>
-          <input onChange={onPriceChange} type="number"></input>
+          <input
+            min="0"
+            step=".01"
+            placeholder="0.00"
+            onChange={onPriceChange}
+            type="number"
+            required="true"
+          ></input>
         </div>
         <ButtonAST />
       </form>

@@ -11,7 +11,7 @@
 .modal-overlayer {
   position: fixed;
   top: 20%;
-  left: 27%;
+  left: 30%;
   z-index: 20;
   width: 40%;
   height: 40%;
@@ -31,4 +31,31 @@
   width: 90%;
   text-align: center;
   font-size: 25px;
+}
+
+@media screen and (max-width: 540px) {
+  .modal-overlayer {
+    left: 0;
+    width: 100%;
+    height: 40%;
+  }
+  .titleaddscreen {
+    font-size: 20px;
+  }
+}
+
+@media screen and (min-device-width: 740px) and (max-width: 1000px) {
+  .modal-overlayer {
+    left: 10%;
+    width: 80%;
+    height: 30%;
+  }
+}
+
+@media screen and (min-device-width: 1000px) and (max-width: 1024px) {
+  .modal-overlayer {
+    left: 20%;
+    width: 60%;
+    height: 60%;
+  }
 }

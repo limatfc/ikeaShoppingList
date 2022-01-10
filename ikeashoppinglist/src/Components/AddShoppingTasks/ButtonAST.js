@@ -1,6 +1,6 @@
 import "../Helpers/Button.css";
 
-const ButtonAST = () => {
+const ButtonAST = (props) => {
   return (
     <button className="button" type="submit">
       Add

@@ -19,3 +19,15 @@
   font-size: 15px;
   text-align: center;
 }
+
+@media screen and (max-width: 540px) {
+  .formAdd {
+    width: 100%;
+  }
+}
+
+@media screen and (min-device-width: 540px) and (max-width: 1280px) {
+  .formAdd {
+    width: 100%;
+  }
+}

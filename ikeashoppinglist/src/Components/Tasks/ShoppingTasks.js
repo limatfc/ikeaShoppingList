@@ -1,9 +1,9 @@
 import React, { useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
-import NonCompletedItem from "./NoncompletedItem";
+import IncompleteTask from "./IncompleteTask";
 import "./ShoppingTasks.css";
 import "../Helpers/Button.css";
-import CompletedItem from "./CompletedItem";
+import CompleteTask from "./CompleteTask";
 import TasksContext from "../../store/tasks-context";
 
 const ShoppingTasks = () => {
@@ -31,7 +31,7 @@ const ShoppingTasks = () => {
           Price
         </button>
       </div>
-      <NonCompletedItem />
+      <IncompleteTask />
       <button
         className="button"
         onClick={() => {
@@ -48,7 +48,7 @@ const ShoppingTasks = () => {
         </div>
       )}
       {showCompletedItems && (
-        <CompletedItem hideCompletedItem={hideCompletedItem} />
+        <CompleteTask hideCompletedItem={hideCompletedItem} />
       )}
     </div>
   );
