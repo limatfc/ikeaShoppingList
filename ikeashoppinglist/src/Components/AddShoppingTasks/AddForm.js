@@ -54,7 +54,7 @@ const AddForm = () => {
             required="true"
           ></input>
           <br></br>
-          <label className="font">Price ($)</label>
+          <label className="font">Price (SEK)</label>
           <input
             min="0"
             step=".01"
