@@ -16,13 +16,20 @@
 }
 
 .font {
-  font-size: 15px;
+  font-size: 16px;
   text-align: center;
 }
 
 @media screen and (max-width: 540px) {
   .formAdd {
     width: 100%;
+  }
+  .font {
+    font-size: 16px;
+    text-align: center;
+  }
+  .inputFont {
+    font-size: 16px;
   }
 }
 

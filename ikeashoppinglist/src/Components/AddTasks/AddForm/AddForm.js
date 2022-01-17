@@ -52,6 +52,7 @@ const AddForm = () => {
             placeholder="Product's name"
             type="text"
             required={true}
+            className="inputFont"
           ></input>
           <br></br>
           <label className="font">Price (SEK)</label>
@@ -62,6 +63,7 @@ const AddForm = () => {
             onChange={onPriceChange}
             type="number"
             required={true}
+            className="inputFont"
           ></input>
         </div>
         <Button type="submit">Add</Button>
