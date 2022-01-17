@@ -28,7 +28,6 @@ const ComponentTree = () => (
     </TreeNode>
 
     <TreeNode label={"Error"} />
-    <TreeNode label={"Component Tree"} />
   </Tree>
 );
 

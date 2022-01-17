@@ -5,7 +5,6 @@ import AddTask from "./Components/AddTasks/AddTask";
 import HomePage from "./Components/HomePage/HomePage";
 import Tasks from "./Components/Tasks/Tasks";
 import Error from "./Error/Error";
-import ComponentTree from "./Components/ComponentTree/ComponentTree";
 
 function App() {
   return (
@@ -23,7 +22,6 @@ function App() {
         />
         <Route path="/shoppinglist" element={<Tasks />} />
         <Route path="*" element={<Error />} />
-        <Route path="/componenttree" element={<ComponentTree />} />
       </Routes>
     </div>
   );
