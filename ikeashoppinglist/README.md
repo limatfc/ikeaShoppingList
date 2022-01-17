@@ -30,4 +30,5 @@ npm start
 
 ## Component Tree:
 
-[Component Tree](https://limatfc.github.io/ikeaShoppingList/#/componenttree)
+![](./src/Components/Images/ComponentTree.png)
+It can also be found at [https://limatfc.github.io/ikeaShoppingList/#/componenttree](https://limatfc.github.io/ikeaShoppingList/#/componenttree)
