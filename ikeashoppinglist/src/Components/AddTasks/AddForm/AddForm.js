@@ -1,9 +1,9 @@
 import React, { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import TasksContext from "../../store/tasks-context";
+import TasksContext from "../../../store/tasks-context";
 import "./AddForm.css";
-import imageDefault from "../Images/imageDefault.jpeg";
-import ButtonAST from "./ButtonAST";
+import imageDefault from "../../Images/imageDefault.jpeg";
+import Button from "../../Button/Button";
 import { v4 as uuidv4 } from "uuid";
 
 const AddForm = () => {
@@ -51,7 +51,7 @@ const AddForm = () => {
             onChange={onNameChange}
             placeholder="Product's name"
             type="text"
-            required="true"
+            required={true}
           ></input>
           <br></br>
           <label className="font">Price (SEK)</label>
@@ -61,10 +61,10 @@ const AddForm = () => {
             placeholder="0.00"
             onChange={onPriceChange}
             type="number"
-            required="true"
+            required={true}
           ></input>
         </div>
-        <ButtonAST />
+        <Button type="submit">Add</Button>
       </form>
     </React.Fragment>
   );

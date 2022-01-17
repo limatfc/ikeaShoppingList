@@ -1,13 +1,10 @@
-import React, { useContext } from "react";
-import TasksContext from "../../store/tasks-context";
+import React from "react";
 import "./CompleteTask.css";
 
 const CompleteTask = (props) => {
-  const ctxTasks = useContext(TasksContext);
-
   return (
     <div className="taskWrapperCom">
-      {ctxTasks.inputedTasks
+      {props.inputedTasks
         .filter((task) => task.status === "complete")
         .map((filteredTasks, i) => (
           <div className="taskItemCom" key={i}>
@@ -19,12 +16,10 @@ const CompleteTask = (props) => {
               className="imageCom"
               src={filteredTasks.imageLink}
               alt="black and white"
+              label="black and white"
             />
           </div>
         ))}
-      <button className="link" onClick={props.hideCompletedItem}>
-        Hide completed items
-      </button>
     </div>
   );
 };

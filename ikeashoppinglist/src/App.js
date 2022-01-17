@@ -1,9 +1,9 @@
 import React from "react";
 import { Routes, Route } from "react-router-dom";
 import "./App.css";
-import AddShoppingTask from "./Components/AddShoppingTasks/AddShoppingTask";
+import AddTask from "./Components/AddTasks/AddTask";
 import HomePage from "./Components/HomePage/HomePage";
-import ShoppingTasks from "./Components/Tasks/ShoppingTasks";
+import Tasks from "./Components/Tasks/Tasks";
 import Error from "./Error/Error";
 
 function App() {
@@ -15,13 +15,13 @@ function App() {
           path="/additems"
           element={
             <React.Fragment>
-              <ShoppingTasks />
-              <AddShoppingTask />
+              <Tasks />
+              <AddTask />
             </React.Fragment>
           }
         />
-        <Route path="/shoppinglist" element={<ShoppingTasks />} />
-        <Route path="*" element={Error} />
+        <Route path="/shoppinglist" element={<Tasks />} />
+        <Route path="*" element={<Error />} />
       </Routes>
     </div>
   );

@@ -1,0 +1,13 @@
+.imageHPwrapper {
+  max-width: 70%;
+}
+.imageHP {
+  width: 100%;
+  height: auto;
+}
+
+@media screen and (min-device-width: 740px) and (max-width: 1280px) {
+  .imageHPwrapper {
+    max-width: 40%;
+  }
+}

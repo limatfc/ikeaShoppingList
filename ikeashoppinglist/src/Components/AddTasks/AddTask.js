@@ -1,13 +1,13 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import AddForm from "./AddForm";
-import "./AddShoppingTask.css";
+import AddForm from "./AddForm/AddForm";
+import "./AddTask.css";
 
 const Backdrop = () => {
   return <div className="backdrop"></div>;
 };
 
-const ModalOverlayer = () => {
+export const ModalOverlayer = () => {
   return (
     <div className="modal-overlayer">
       <h1 className="titleaddscreen">Add Shopping Items</h1>
@@ -16,7 +16,7 @@ const ModalOverlayer = () => {
   );
 };
 
-const AddShoppingTask = () => {
+const AddTask = () => {
   return (
     <React.Fragment>
       {ReactDOM.createPortal(
@@ -31,4 +31,4 @@ const AddShoppingTask = () => {
   );
 };
 
-export default AddShoppingTask;
+export default AddTask;

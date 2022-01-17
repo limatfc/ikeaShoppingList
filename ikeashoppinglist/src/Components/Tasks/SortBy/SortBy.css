@@ -1,0 +1,19 @@
+.sortByDiv {
+  padding-top: 3%;
+  padding-bottom: 3%;
+  display: flex;
+  justify-content: space-evenly;
+  width: 80%;
+  align-self: center;
+}
+
+.linkLike {
+  background: none;
+  border: none;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.linkLike:hover {
+  color: #ffcd00;
+}

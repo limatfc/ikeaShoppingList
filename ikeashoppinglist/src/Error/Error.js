@@ -6,9 +6,12 @@ const Error = () => {
     <React.Fragment>
       <h1>Ops, something went wrong.</h1>
       <h2>
-        You can go back
+        Would you like to go back to the:
         <nav>
-          <Link to="/"> here</Link>
+          <Link to="/">Home page</Link>
+        </nav>
+        <nav>
+          <Link to="/shoppinglist">Shopping List</Link>
         </nav>
       </h2>
     </React.Fragment>

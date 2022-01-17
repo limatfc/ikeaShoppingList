@@ -1,26 +1,27 @@
 import React from "react";
 import "./HomePage.css";
-import IkeaLogo from "./IkeaLogo";
-import image from "../Images/FrontPageImage.png";
-import Summary from "./Summary";
-import ButtonHP from "./ButtonHP";
+import IkeaLogo from "./IkeaLogo/IkeaLogo";
+import Summary from "./Summary/Summary";
+import Button from "../Button/Button";
+import HomePageImage from "./HomePageImage/HomePageImage";
+import { useNavigate } from "react-router-dom";
 
 const HomePage = () => {
+  const navigate = useNavigate();
+
   return (
-    <React.Fragment>
-      <div className="wrapperHomePage">
-        <IkeaLogo />
-        <div className="imageHPwrapper">
-          <img
-            className="imageHomePage"
-            src={image}
-            alt="A blue purse and a yellow wallet."
-          />
-        </div>
-        <Summary />
-        <ButtonHP />
-      </div>
-    </React.Fragment>
+    <div className="wrapperHomePage">
+      <IkeaLogo />
+      <HomePageImage />
+      <Summary />
+      <Button
+        onClickHandler={() => {
+          navigate("/additems");
+        }}
+      >
+        Add Items
+      </Button>
+    </div>
   );
 };
 

@@ -1,17 +1,14 @@
-import React, { useContext } from "react";
-import TasksContext from "../../store/tasks-context";
+import React from "react";
 import "./IncompleteTask.css";
 
-const IncompleteTask = () => {
-  const ctxTask = useContext(TasksContext);
-
+const IncompleteTask = (props) => {
   const onChangeHandler = (event) => {
-    ctxTask.onTaskChangeHandler(event.target.value);
+    props.onTaskChangeHandler(event.target.value);
   };
 
   return (
     <div className="taskWrapperIn">
-      {ctxTask.inputedTasks
+      {props.inputedTasks
         .filter((task) => task.status === "incomplete")
         .map((filteredTasks, i) => {
           return (
@@ -29,6 +26,7 @@ const IncompleteTask = () => {
                 className="imageIn"
                 src={filteredTasks.imageLink}
                 alt="black and white with default value"
+                label="black and white with default value"
               />
             </div>
           );

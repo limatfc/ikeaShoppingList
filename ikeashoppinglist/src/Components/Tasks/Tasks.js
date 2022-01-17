@@ -1,12 +1,13 @@
 import React, { useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
-import IncompleteTask from "./IncompleteTask";
-import "./ShoppingTasks.css";
-import "../Helpers/Button.css";
-import CompleteTask from "./CompleteTask";
+import IncompleteTask from "./IncompleteTask/IncompleteTask";
+import "./Tasks.css";
+import Button from "../Button/Button";
+import CompleteTask from "./CompleteTask/CompleteTask";
 import TasksContext from "../../store/tasks-context";
+import SortBy from "./SortBy/SortBy";
 
-const ShoppingTasks = () => {
+const Tasks = () => {
   const [showCompletedItems, setShowCompletedItems] = useState(false);
   const navigate = useNavigate();
   const ctxTasks = useContext(TasksContext);
@@ -22,24 +23,21 @@ const ShoppingTasks = () => {
   return (
     <div className="shoppingTasks">
       <header className="headerTasks">Shopping list</header>
-      <div className="sortByDiv">
-        <span>Sort by:</span>
-        <button onClick={ctxTasks.sortByName} className="linkLike">
-          Name
-        </button>
-        <button onClick={ctxTasks.sortByPrice} className="linkLike">
-          Price
-        </button>
-      </div>
-      <IncompleteTask />
-      <button
-        className="button"
-        onClick={() => {
+      <SortBy
+        sortByPrice={ctxTasks.sortByPrice}
+        sortByName={ctxTasks.sortByName}
+      />
+      <IncompleteTask
+        onTaskChangeHandler={ctxTasks.onTaskChangeHandler}
+        inputedTasks={ctxTasks.inputedTasks}
+      />
+      <Button
+        onClickHandler={() => {
           navigate("/additems");
         }}
       >
         Add a new item
-      </button>
+      </Button>
       {!showCompletedItems && (
         <div className="wrapper">
           <button onClick={showCompletedItem} className="linkLike">
@@ -48,10 +46,15 @@ const ShoppingTasks = () => {
         </div>
       )}
       {showCompletedItems && (
-        <CompleteTask hideCompletedItem={hideCompletedItem} />
+        <React.Fragment>
+          <CompleteTask inputedTasks={ctxTasks.inputedTasks} />
+          <button className="link" onClick={hideCompletedItem}>
+            Hide completed items
+          </button>
+        </React.Fragment>
       )}
     </div>
   );
 };
 
-export default ShoppingTasks;
+export default Tasks;

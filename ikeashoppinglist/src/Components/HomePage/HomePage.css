@@ -8,14 +8,6 @@
   z-index: 0;
 }
 
-.imageHPwrapper {
-  max-width: 70%;
-}
-.imageHomePage {
-  width: 100%;
-  height: auto;
-}
-
 @media screen and (max-width: 540px) {
   .wrapperHomePage {
     margin-left: 2%;
@@ -27,8 +19,5 @@
   .wrapperHomePage {
     margin-left: 20%;
     margin-right: 20%;
-  }
-  .imageHPwrapper {
-    max-width: 40%;
   }
 }
