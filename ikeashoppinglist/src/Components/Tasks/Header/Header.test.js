@@ -1,6 +1,6 @@
 import { render, screen } from "@testing-library/react";
 import "@testing-library/jest-dom";
-import SortBy from "./SortBy";
+import SortBy from "./Header";
 import userEvent from "@testing-library/user-event";
 
 const mockSortByName = jest.fn();

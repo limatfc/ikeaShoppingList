@@ -10,19 +10,23 @@ const TasksProvider = (props) => {
     const getLocalData = localStorage.getItem("storedInputedTasks");
     const localData = JSON.parse(getLocalData);
     if (localData && localData.length > 0) {
+      console.log("aaaa");
       localData.find((incompleteTask) => {
         if (incompleteTask.status === "incomplete") {
           navigate("/shoppinglist");
           setInputedTasks(localData);
+          console.log("bbbbbb");
         } else {
-          setInputedTasks(localData);
           navigate("/");
+          setInputedTasks(localData);
+          console.log("cccccc");
         }
         return incompleteTask.status === "incomplete";
       });
     }
     if (!localData || localData.length === 0) {
       navigate("/");
+      console.log("dddd");
     }
   };
 
@@ -43,8 +47,8 @@ const TasksProvider = (props) => {
     setInputedTasks((prevItems) => {
       const copyPrevItems = [...prevItems];
       const find = copyPrevItems.find((itemKey) => itemKey.key === keyValue);
-      const alteredValue = (find.status = "complete");
-      return [alteredValue, ...copyPrevItems];
+      find.status = "complete";
+      return [...copyPrevItems];
     });
   };
 

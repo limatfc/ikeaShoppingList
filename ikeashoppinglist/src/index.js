@@ -2,7 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom";
 import "./index.css";
 import App from "./App";
-import "./Components/Fonts/NotoSans-Regular.ttf";
+import "./Assets/Fonts/NotoSans-Regular.ttf";
 import TasksProvider from "./store/TasksProvider";
 import { HashRouter as Router } from "react-router-dom";
 

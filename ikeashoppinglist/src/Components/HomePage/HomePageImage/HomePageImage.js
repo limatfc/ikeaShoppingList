@@ -1,4 +1,4 @@
-import image from "../../Images/FrontPageImage.png";
+import image from "../../../Assets/Images/FrontPageImage.png";
 import "./HomePageImage.css";
 
 const HomePageImage = () => {

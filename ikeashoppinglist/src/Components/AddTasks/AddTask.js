@@ -1,10 +1,19 @@
 import React from "react";
 import ReactDOM from "react-dom";
+import { useNavigate } from "react-router-dom";
 import AddForm from "./AddForm/AddForm";
 import "./AddTask.css";
 
 const Backdrop = () => {
-  return <div className="backdrop"></div>;
+  const navigate = useNavigate();
+  return (
+    <div
+      onClick={() => {
+        navigate("/shoppinglist");
+      }}
+      className="backdrop"
+    ></div>
+  );
 };
 
 export const ModalOverlayer = () => {

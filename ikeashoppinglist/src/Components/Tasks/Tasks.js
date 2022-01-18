@@ -5,7 +5,7 @@ import "./Tasks.css";
 import Button from "../Button/Button";
 import CompleteTask from "./CompleteTask/CompleteTask";
 import TasksContext from "../../store/tasks-context";
-import SortBy from "./SortBy/SortBy";
+import Header from "./Header/Header";
 
 const Tasks = () => {
   const [showCompletedItems, setShowCompletedItems] = useState(false);
@@ -22,8 +22,7 @@ const Tasks = () => {
 
   return (
     <div className="shoppingTasks">
-      <header className="headerTasks">Shopping list</header>
-      <SortBy
+      <Header
         sortByPrice={ctxTasks.sortByPrice}
         sortByName={ctxTasks.sortByName}
       />

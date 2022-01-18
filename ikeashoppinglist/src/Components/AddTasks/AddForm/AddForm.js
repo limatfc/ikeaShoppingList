@@ -2,7 +2,7 @@ import React, { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import TasksContext from "../../../store/tasks-context";
 import "./AddForm.css";
-import imageDefault from "../../Images/imageDefault.jpeg";
+import imageDefault from "../../../Assets/Images/imageDefault.jpeg";
 import Button from "../../Button/Button";
 import { v4 as uuidv4 } from "uuid";
 
