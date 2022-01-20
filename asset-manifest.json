@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/ikeaShoppingList/static/css/main.7d8c04a0.chunk.css",
-    "main.js": "/ikeaShoppingList/static/js/main.0ff1c862.chunk.js",
-    "main.js.map": "/ikeaShoppingList/static/js/main.0ff1c862.chunk.js.map",
+    "main.js": "/ikeaShoppingList/static/js/main.c07f13e7.chunk.js",
+    "main.js.map": "/ikeaShoppingList/static/js/main.c07f13e7.chunk.js.map",
     "runtime-main.js": "/ikeaShoppingList/static/js/runtime-main.4c5c3296.js",
     "runtime-main.js.map": "/ikeaShoppingList/static/js/runtime-main.4c5c3296.js.map",
     "static/js/2.b43197ee.chunk.js": "/ikeaShoppingList/static/js/2.b43197ee.chunk.js",
@@ -17,6 +17,6 @@
     "static/js/runtime-main.4c5c3296.js",
     "static/js/2.b43197ee.chunk.js",
     "static/css/main.7d8c04a0.chunk.css",
-    "static/js/main.0ff1c862.chunk.js"
+    "static/js/main.c07f13e7.chunk.js"
   ]
 }
