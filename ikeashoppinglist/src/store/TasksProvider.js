@@ -10,23 +10,19 @@ const TasksProvider = (props) => {
     const getLocalData = localStorage.getItem("storedInputedTasks");
     const localData = JSON.parse(getLocalData);
     if (localData && localData.length > 0) {
-      console.log("aaaa");
       localData.find((incompleteTask) => {
         if (incompleteTask.status === "incomplete") {
           navigate("/shoppinglist");
           setInputedTasks(localData);
-          console.log("bbbbbb");
         } else {
           navigate("/");
           setInputedTasks(localData);
-          console.log("cccccc");
         }
         return incompleteTask.status === "incomplete";
       });
     }
     if (!localData || localData.length === 0) {
       navigate("/");
-      console.log("dddd");
     }
   };
 
@@ -53,8 +49,8 @@ const TasksProvider = (props) => {
   };
 
   const sortByName = () => {
-    const copyNonCompletedItems = [...inputedTasks];
-    const sortedName = copyNonCompletedItems.sort((a, b) => {
+    const copyInputedTasks = [...inputedTasks];
+    const sortedName = copyInputedTasks.sort((a, b) => {
       if (a.name < b.name) {
         return -1;
       } else if (a.name > b.name) {
@@ -67,8 +63,8 @@ const TasksProvider = (props) => {
   };
 
   const sortByPrice = () => {
-    const copyNonCompletedItems = [...inputedTasks];
-    const sortedPrice = copyNonCompletedItems.sort((a, b) => {
+    const copyInputedTasks = [...inputedTasks];
+    const sortedPrice = copyInputedTasks.sort((a, b) => {
       return a.price - b.price;
     });
     setInputedTasks(sortedPrice);
