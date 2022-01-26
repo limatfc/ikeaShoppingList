@@ -10,6 +10,7 @@ import Header from "./Header/Header";
 const Tasks = () => {
   const [showCompletedItems, setShowCompletedItems] = useState(false);
   const navigate = useNavigate();
+  // naming -1 use ful name ctx
   const ctxTasks = useContext(TasksContext);
 
   const showCompletedItem = () => {
@@ -22,6 +23,9 @@ const Tasks = () => {
 
   return (
     <div className="shoppingTasks">
+      {/* Architecture -1 */}
+      {/* If we have a global context, then why are we passing props here, */}
+      {/* Open the file Header to continue this comment message... */}
       <Header
         sortByPrice={ctxTasks.sortByPrice}
         sortByName={ctxTasks.sortByName}
@@ -30,13 +34,11 @@ const Tasks = () => {
         onTaskChangeHandler={ctxTasks.onTaskChangeHandler}
         inputedTasks={ctxTasks.inputedTasks}
       />
-      <Button
-        onClickHandler={() => {
-          navigate("/additems");
-        }}
-      >
+      {/* make it one line */}
+      <Button onClickHandler={() => navigate("/additems")}>
         Add a new item
       </Button>
+      {/* You dont need a wrapper, its a sign that we need to improve our CSS layout techniques, we will see this during the course */}
       {!showCompletedItems && (
         <div className="wrapper">
           <button onClick={showCompletedItem} className="linkLike">
@@ -44,6 +46,8 @@ const Tasks = () => {
           </button>
         </div>
       )}
+
+      {/* This fragment is a sign that you could have organized this in a better way */}
       {showCompletedItems && (
         <React.Fragment>
           <CompleteTask inputedTasks={ctxTasks.inputedTasks} />

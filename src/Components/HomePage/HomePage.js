@@ -10,17 +10,13 @@ const HomePage = () => {
   const navigate = useNavigate();
 
   return (
+    // use wrapper-home-page as the name using dashes to separate words, thats the correct CSS nomenclature.
     <div className="wrapperHomePage">
       <IkeaLogo />
       <HomePageImage />
       <Summary />
-      <Button
-        onClickHandler={() => {
-          navigate("/additems");
-        }}
-      >
-        Add Items
-      </Button>
+      {/* You can make the button 1 line by removing the extra {} around navigate("/additems") */}
+      <Button onClickHandler={() => navigate("/additems")}>Add Items</Button>
     </div>
   );
 };

@@ -2,10 +2,13 @@ import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import TasksContext from "./tasks-context";
 
+// This file is too long -1
+// We would explain how to break it into 2 files the Context and the reducer during class
 const TasksProvider = (props) => {
   const [inputedTasks, setInputedTasks] = useState([]);
   const navigate = useNavigate();
 
+  // This is too long, you need to refactor it
   const getLocalData = () => {
     const getLocalData = localStorage.getItem("storedInputedTasks");
     const localData = JSON.parse(getLocalData);
@@ -26,6 +29,10 @@ const TasksProvider = (props) => {
     }
   };
 
+  // No comment in production -1
+  // No "please don't check this line ESlint" -1
+  // Either dont use ESlint or take the time to find the problem and fix it
+  // You literally just told the reviewer, that you have "a skeleton hidding in the closet"
   // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(getLocalData, []);
 

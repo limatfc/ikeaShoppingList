@@ -1,6 +1,7 @@
 import React from "react";
 import "./Header.css";
 
+// Here we could have imported the context and have access to sortByName and sortByPrice
 const SortBy = (props) => {
   return (
     <React.Fragment>
@@ -18,4 +19,5 @@ const SortBy = (props) => {
   );
 };
 
+// Naming -1 the file is called Header here is called SortBy
 export default SortBy;

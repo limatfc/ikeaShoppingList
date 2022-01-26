@@ -16,6 +16,7 @@ const Backdrop = () => {
   );
 };
 
+// You can move this ones as separate files, this one makes more sense as a separate file than the IKEA logo
 export const ModalOverlayer = () => {
   return (
     <div className="modal-overlayer">
@@ -26,6 +27,9 @@ export const ModalOverlayer = () => {
 };
 
 const AddTask = () => {
+  // Again fragment -1
+  // Double portal -1
+  // You dont need to 2 portals, you can use 1 and put both Backdrop and ModalOverlayer inside a <div role="modal">
   return (
     <React.Fragment>
       {ReactDOM.createPortal(
