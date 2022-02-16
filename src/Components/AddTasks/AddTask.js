@@ -3,7 +3,6 @@ import ReactDOM from "react-dom";
 import AddForm from "./addForm/AddForm";
 import "./AddTask.css";
 
-//move this to another file?
 const ModalOverlayer = (props) => {
   return (
     <div>

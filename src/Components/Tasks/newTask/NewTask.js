@@ -13,7 +13,7 @@ export default function NewTask(props) {
     <div className="new-task-wrapper">
       {props.list.map((filteredTasks) => {
         return (
-          <div key={filteredTasks.id} className="wraper-checkbox">
+          <div key={filteredTasks.key} className="wraper-checkbox">
             <label className="new-task-label">
               <input
                 onChange={onChangeHandler}

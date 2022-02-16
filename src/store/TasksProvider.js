@@ -11,30 +11,21 @@ const TasksProvider = (props) => {
   // This is too long, you need to refactor it
   const getLocalData = () => {
     const getLocalData = localStorage.getItem("storedInputedTasks");
-    const localData = JSON.parse(getLocalData);
-    if (localData && localData.length > 0) {
-      localData.find((incompleteTask) => {
-        if (incompleteTask.status === "incomplete") {
-          navigate("/shoppinglist");
-          setInputedTasks(localData);
-        } else {
-          navigate("/");
-          setInputedTasks(localData);
-        }
-        return incompleteTask.status === "incomplete";
-      });
-    }
-    if (!localData || localData.length === 0) {
+    const localData = JSON.parse(getLocalData) || [];
+    setInputedTasks(localData);
+  };
+
+  const navigationHandler = () => {
+    if (inputedTasks.length > 0) {
+      navigate("/shoppinglist");
+    } else if (inputedTasks.length === 0) {
       navigate("/");
     }
   };
 
-  // No comment in production -1
-  // No "please don't check this line ESlint" -1
-  // Either dont use ESlint or take the time to find the problem and fix it
-  // You literally just told the reviewer, that you have "a skeleton hidding in the closet"
-  // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(getLocalData, []);
+
+  useEffect(navigationHandler, [navigate, inputedTasks]);
 
   useEffect(() => {
     localStorage.setItem("storedInputedTasks", JSON.stringify(inputedTasks));

@@ -7,13 +7,13 @@ export default function Header() {
 
   return (
     <React.Fragment>
-      <header className="headerTasks">Shopping list</header>
-      <div className="sortByDiv">
+      <header className="header-tasks">Shopping list</header>
+      <div className="sort-by-div">
         <span>Sort by:</span>
-        <button onClick={ctxTasks.sortByName} className="linkLike">
+        <button onClick={ctxTasks.sortByName} className="link-like-header">
           Name
         </button>
-        <button onClick={ctxTasks.sortByPrice} className="linkLike">
+        <button onClick={ctxTasks.sortByPrice} className="link-like-header">
           Price
         </button>
       </div>

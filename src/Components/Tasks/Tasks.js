@@ -5,7 +5,7 @@ import TasksContext from "../../store/tasks-context";
 import Header from "./header/Header";
 import NewTask from "./newTask/NewTask";
 
-const Tasks = ({ showModalHandler }) => {
+export default function Tasks({ showModalHandler }) {
   const [showCompletedItems, setShowCompletedItems] = useState(false);
   const contextTasks = useContext(TasksContext);
 
@@ -21,9 +21,10 @@ const Tasks = ({ showModalHandler }) => {
   );
 
   return (
-    <div className="shoppingTasks">
+    <div className="shopping-tasks">
       <Header />
       <NewTask list={IncompleteItems} />
+      {IncompleteItems.length === 0 && <p>No items to display.</p>}
       <Button onClickHandler={showModalHandler}>Add a new item</Button>
       <button className="link-like wrapper" onClick={showCompletedItemHandler}>
         {showCompletedItems ? "Hide" : "Show"} completed items
@@ -31,8 +32,9 @@ const Tasks = ({ showModalHandler }) => {
       {showCompletedItems && (
         <NewTask completedDecorations={true} list={CompleteItems} />
       )}
+      {showCompletedItems && CompleteItems.length === 0 && (
+        <p>No items to display.</p>
+      )}
     </div>
   );
-};
-
-export default Tasks;
+}

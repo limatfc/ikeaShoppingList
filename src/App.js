@@ -21,10 +21,12 @@ export default function App() {
           path="/"
           element={<HomePage showModalHandler={showModalHandler} />}
         />
+        ) (
         <Route
           path="/shoppinglist"
           element={<Tasks showModalHandler={showModalHandler} />}
         />
+        )
         <Route path="*" element={<Error />} />
       </Routes>
     </div>
