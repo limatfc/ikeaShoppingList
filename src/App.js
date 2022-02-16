@@ -1,43 +1,32 @@
-import React from "react";
+import React, { useState } from "react";
 import { Routes, Route } from "react-router-dom";
 import "./App.css";
-import AddTask from "./Components/AddTasks/AddTask";
-import HomePage from "./Components/HomePage/HomePage";
-import Tasks from "./Components/Tasks/Tasks";
-import Error from "./Error/Error";
-import ComponentTree from "./Assets/ComponentTree/ComponentTree";
+import AddTask from "./components/addTasks/AddTask";
+import HomePage from "./components/homePage/HomePage";
+import Tasks from "./components/tasks/Tasks";
+import Error from "./error/Error";
 
-// you can put the export default here...
+export default function App() {
+  const [showModal, setShowModal] = useState(false);
 
-/**
- * Folder file names
- * Folders should be lowercase not uppercase (follow the convention you see on the create-react-app)
- * Written here because i cannot write comments on the folders themselves
- */
-function App() {
+  const showModalHandler = () => {
+    setShowModal(!showModal);
+  };
+
   return (
     <div className="App">
+      {showModal && <AddTask showModalHandler={showModalHandler} />}
       <Routes>
-        <Route path="/" element={<HomePage />} />
-        {/* Fragment -1 */}
-        {/* If you need to create a new page called FormPage, do so instead of using fragments */}
         <Route
-          path="/additems"
-          element={
-            <React.Fragment>
-              <Tasks />
-              <AddTask />
-            </React.Fragment>
-          }
+          path="/"
+          element={<HomePage showModalHandler={showModalHandler} />}
         />
-        <Route path="/shoppinglist" element={<Tasks />} />
+        <Route
+          path="/shoppinglist"
+          element={<Tasks showModalHandler={showModalHandler} />}
+        />
         <Route path="*" element={<Error />} />
-        {/* Interesting, but not neccesary */}
-        <Route path="/abcd" element={<ComponentTree />} />
       </Routes>
     </div>
   );
 }
-
-// ... to avoid a second line here
-export default App;

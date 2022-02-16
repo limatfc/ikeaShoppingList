@@ -22,26 +22,6 @@ jest.mock("./Summary/Summary", () => {
   };
 });
 
-jest.mock("./HomePageImage/HomePageImage", () => {
-  return {
-    __esModule: true,
-    A: true,
-    default: () => {
-      return <div>Home Page Image test</div>;
-    },
-  };
-});
-
-jest.mock("./IkeaLogo/IkeaLogo", () => {
-  return {
-    __esModule: true,
-    A: true,
-    default: () => {
-      return <div>Ikea Logo test</div>;
-    },
-  };
-});
-
 describe("<HomePage />", () => {
   test("Summary component is present", () => {
     render(<HomePage />);
@@ -51,12 +31,14 @@ describe("<HomePage />", () => {
 
   test("Home Page Image component is present", () => {
     render(<HomePage />);
-    const HPImageElement = screen.getByText("Home Page Image test");
-    expect(HPImageElement).toBeInTheDocument();
+    const IkeaLogoElement = screen.getByAltText("A blue purse", {
+      exact: false,
+    });
+    expect(IkeaLogoElement).toBeInTheDocument();
   });
   test("Ikea Logo component is present", () => {
     render(<HomePage />);
-    const IkeaLogoElement = screen.getByText("Ikea Logo test");
+    const IkeaLogoElement = screen.getByRole("img", { name: "IKEA logo" });
     expect(IkeaLogoElement).toBeInTheDocument();
   });
   test("Button component is receiving 'Add Items' text", () => {

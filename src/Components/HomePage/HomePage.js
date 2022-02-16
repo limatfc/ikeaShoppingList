@@ -1,24 +1,27 @@
 import React from "react";
+
 import "./HomePage.css";
-import IkeaLogo from "./IkeaLogo/IkeaLogo";
-import Summary from "./Summary/Summary";
-import Button from "../Button/Button";
-import HomePageImage from "./HomePageImage/HomePageImage";
-import { useNavigate } from "react-router-dom";
+import logo from "../../assets/images/logo.png";
+import image from "../../assets/images/FrontPageImage.png";
+import Button from "../button/Button";
+import Summary from "./summary/Summary";
 
-const HomePage = () => {
-  const navigate = useNavigate();
-
+export default function HomePage(props) {
   return (
-    // use wrapper-home-page as the name using dashes to separate words, thats the correct CSS nomenclature.
-    <div className="wrapperHomePage">
-      <IkeaLogo />
-      <HomePageImage />
+    <div className="wrapper-home-page">
+      <div className="wrapper-logo">
+        <img className="logo" src={logo} alt="IKEA logo" label="IKEA logo" />
+      </div>
+      <div className="image-homepage-wrapper">
+        <img
+          className="image-homepage"
+          src={image}
+          alt="A blue purse and a yellow wallet."
+        />
+      </div>
       <Summary />
-      {/* You can make the button 1 line by removing the extra {} around navigate("/additems") */}
-      <Button onClickHandler={() => navigate("/additems")}>Add Items</Button>
+
+      <Button onClickHandler={props.showModalHandler}>Add Items</Button>
     </div>
   );
-};
-
-export default HomePage;
+}

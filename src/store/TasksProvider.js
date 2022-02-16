@@ -47,12 +47,12 @@ const TasksProvider = (props) => {
   };
 
   const onTaskChangeHandler = (keyValue) => {
-    setInputedTasks((prevItems) => {
-      const copyPrevItems = [...prevItems];
-      const find = copyPrevItems.find((itemKey) => itemKey.key === keyValue);
-      find.status = "complete";
-      return [...copyPrevItems];
-    });
+    const copyInputedTasks = [...inputedTasks];
+    const find = copyInputedTasks.find((itemKey) => itemKey.key === keyValue);
+    find.status === "incomplete"
+      ? (find.status = "complete")
+      : (find.status = "incomplete");
+    setInputedTasks(copyInputedTasks);
   };
 
   const sortByName = () => {

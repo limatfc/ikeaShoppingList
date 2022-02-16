@@ -9,10 +9,20 @@
 }
 
 .wrapper {
-  padding-top: 3%;
+  padding-top: 4%;
   padding-bottom: 3%;
 }
 
+.link-like {
+  background: none;
+  border: none;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.link-like:hover {
+  color: #ffcd00;
+}
 @media screen and (max-width: 540px) {
   .shoppingTasks {
     margin-left: 2%;
