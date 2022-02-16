@@ -21,4 +21,4 @@ You can check those at the **package.json** file.
 
 ## Component Tree:
 
-![alt text](https://github.com/limatfc/ikeaShoppingList/blob/main/ikeashoppinglist/src/Assets/Images/ComponentTree.png)
+![alt text](https://github.com/limatfc/ikeaShoppingList/blob/main/src/Assets/Images/ComponentTree.png)
