@@ -1,0 +1,21 @@
+.new-task-wrapper {
+  padding-bottom: 3%;
+}
+
+.wraper-checkbox {
+  padding-bottom: 1%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.thumbnail {
+  width: 10%;
+}
+
+.new-task-label {
+  align-self: center;
+}
+
+.completed-decoration {
+  text-decoration: line-through;
+}
