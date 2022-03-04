@@ -1,31 +1,18 @@
 import React, { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
 import TasksContext from "./tasks-context";
+import { sortByNameHook, sortByPriceHook } from "../components/scripts/sort-by";
+import { toggleStatusScript } from "../components/scripts/toggle-status";
 
-// This file is too long -1
-// We would explain how to break it into 2 files the Context and the reducer during class
 const TasksProvider = (props) => {
   const [inputedTasks, setInputedTasks] = useState([]);
-  const navigate = useNavigate();
 
-  // This is too long, you need to refactor it
   const getLocalData = () => {
     const getLocalData = localStorage.getItem("storedInputedTasks");
     const localData = JSON.parse(getLocalData) || [];
     setInputedTasks(localData);
   };
 
-  const navigationHandler = () => {
-    if (inputedTasks.length > 0) {
-      navigate("/shoppinglist");
-    } else if (inputedTasks.length === 0) {
-      navigate("/");
-    }
-  };
-
   useEffect(getLocalData, []);
-
-  useEffect(navigationHandler, [navigate, inputedTasks]);
 
   useEffect(() => {
     localStorage.setItem("storedInputedTasks", JSON.stringify(inputedTasks));
@@ -37,43 +24,35 @@ const TasksProvider = (props) => {
     });
   };
 
-  const onTaskChangeHandler = (keyValue) => {
-    const copyInputedTasks = [...inputedTasks];
-    const find = copyInputedTasks.find((itemKey) => itemKey.key === keyValue);
-    find.status === "incomplete"
-      ? (find.status = "complete")
-      : (find.status = "incomplete");
-    setInputedTasks(copyInputedTasks);
+  const toggleStatus = (keyValue) => {
+    const setStatus = toggleStatusScript(inputedTasks, keyValue);
+    setInputedTasks(setStatus);
   };
 
   const sortByName = () => {
-    const copyInputedTasks = [...inputedTasks];
-    const sortedName = copyInputedTasks.sort((a, b) => {
-      if (a.name < b.name) {
-        return -1;
-      } else if (a.name > b.name) {
-        return 1;
-      } else {
-        return 0;
-      }
-    });
+    const sortedName = sortByNameHook(inputedTasks);
     setInputedTasks(sortedName);
   };
 
   const sortByPrice = () => {
-    const copyInputedTasks = [...inputedTasks];
-    const sortedPrice = copyInputedTasks.sort((a, b) => {
-      return a.price - b.price;
-    });
+    const sortedPrice = sortByPriceHook(inputedTasks);
     setInputedTasks(sortedPrice);
+  };
+
+  const editImageLink = (key, imageLink) => {
+    const copyInputedTasks = [...inputedTasks];
+    const foundItem = copyInputedTasks.find((item) => item.key === key);
+    foundItem.imageLink = imageLink;
+    setInputedTasks(copyInputedTasks);
   };
 
   const taskContext = {
     inputedTasks,
     inputedTaskHandler: inputedTaskHandler,
-    onTaskChangeHandler: onTaskChangeHandler,
+    toggleStatus: toggleStatus,
     sortByName: sortByName,
     sortByPrice: sortByPrice,
+    editImageLink: editImageLink,
   };
 
   return (

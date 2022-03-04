@@ -9,7 +9,7 @@
   justify-content: space-between;
 }
 .thumbnail {
-  width: 10%;
+  width: 100%;
 }
 
 .new-task-label {
@@ -18,4 +18,11 @@
 
 .completed-decoration {
   text-decoration: line-through;
+}
+
+.image-input-wrapper {
+  width: 10%;
+}
+.image-input {
+  display: none;
 }

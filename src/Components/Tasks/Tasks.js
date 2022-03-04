@@ -13,28 +13,28 @@ export default function Tasks({ showModalHandler }) {
     setShowCompletedItems(!showCompletedItems);
   };
 
-  const IncompleteItems = contextTasks.inputedTasks.filter(
+  const IncompleteItemsFilter = contextTasks.inputedTasks.filter(
     (item) => item.status === "incomplete"
   );
-  const CompleteItems = contextTasks.inputedTasks.filter(
+
+  const CompleteItemsFilter = contextTasks.inputedTasks.filter(
     (item) => item.status === "complete"
   );
 
   return (
     <div className="shopping-tasks">
       <Header />
-      <NewTask list={IncompleteItems} />
-      {IncompleteItems.length === 0 && <p>No items to display.</p>}
+      {IncompleteItemsFilter.map((item) => (
+        <NewTask key={item.key} list={item} />
+      ))}
       <Button onClickHandler={showModalHandler}>Add a new item</Button>
       <button className="link-like wrapper" onClick={showCompletedItemHandler}>
         {showCompletedItems ? "Hide" : "Show"} completed items
       </button>
-      {showCompletedItems && (
-        <NewTask completedDecorations={true} list={CompleteItems} />
-      )}
-      {showCompletedItems && CompleteItems.length === 0 && (
-        <p>No items to display.</p>
-      )}
+      {showCompletedItems &&
+        CompleteItemsFilter.map((item) => (
+          <NewTask key={item.key} completedDecorations={true} list={item} />
+        ))}
     </div>
   );
 }

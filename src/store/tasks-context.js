@@ -4,9 +4,10 @@ import React from "react";
 const TasksContext = React.createContext({
   inputedTasks: [],
   inputedTaskHandler: (items) => {},
-  onTaskChangeHandler: (item) => {},
+  toggleStatus: (item) => {},
   sortByName: () => {},
   sortByPrice: () => {},
+  editImageLink: (item) => {},
 });
 
 export default TasksContext;

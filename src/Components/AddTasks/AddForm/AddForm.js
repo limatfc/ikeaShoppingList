@@ -1,5 +1,4 @@
 import React, { useContext, useState } from "react";
-import { useNavigate } from "react-router-dom";
 import TasksContext from "../../../store/tasks-context";
 import "./AddForm.css";
 import imageDefault from "../../../assets/images/ImageDefault.jpeg";
@@ -7,7 +6,6 @@ import Button from "../../button/Button";
 import { v4 as uuidv4 } from "uuid";
 
 const AddForm = (props) => {
-  const navigate = useNavigate();
   const tasksCtx = useContext(TasksContext);
   const [nameInputedData, setNameInputedData] = useState("");
   const [priceInputedData, setPriceInputedData] = useState();
@@ -32,7 +30,6 @@ const AddForm = (props) => {
     };
     tasksCtx.inputedTaskHandler(allInputedDataArray);
     props.showModalHandler();
-    navigate("/shoppinglist");
   };
 
   return (
